@@ -20,6 +20,10 @@ class ViewController: UIViewController {
 
 		countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
 
+		button1.layer.borderWidth = 1
+		button2.layer.borderWidth = 1
+		button3.layer.borderWidth = 1
+
 		askQuestion()
 	}
 
