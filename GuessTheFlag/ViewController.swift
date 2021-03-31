@@ -8,9 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-	@IBOutlet var button1: UIButton!
-	@IBOutlet var button2: UIButton!
-	@IBOutlet var button3: UIButton!
+	@IBOutlet var buttons: [UIButton]!
 
 	var countries = [String]()
 	var score = 0
@@ -21,13 +19,10 @@ class ViewController: UIViewController {
 
 		countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
 
-		button1.layer.borderWidth = 1
-		button2.layer.borderWidth = 1
-		button3.layer.borderWidth = 1
-
-		button1.layer.borderColor = UIColor.lightGray.cgColor
-		button2.layer.borderColor = UIColor.lightGray.cgColor
-		button3.layer.borderColor = UIColor.lightGray.cgColor
+		buttons.forEach { button in
+			button.layer.borderWidth = 1
+			button.layer.borderColor = UIColor.lightGray.cgColor
+		}
 
 		askQuestion()
 	}
@@ -36,9 +31,9 @@ class ViewController: UIViewController {
 		countries.shuffle()
 		correctAnswer = Int.random(in: 0...2)
 		title = countries[correctAnswer].uppercased()
-		button1.setImage(UIImage(named: countries[0]), for: .normal)
-		button2.setImage(UIImage(named: countries[1]), for: .normal)
-		button3.setImage(UIImage(named: countries[2]), for: .normal)
+		buttons.forEach { button in
+			button.setImage(UIImage(named: countries[button.tag]), for: .normal)
+		}
 	}
 
 	@IBAction func buttonTapped(_ sender: UIButton) {
