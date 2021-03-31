@@ -41,5 +41,7 @@ class ViewController: UIViewController {
 		button3.setImage(UIImage(named: countries[2]), for: .normal)
 	}
 
+	@IBAction func buttonTapped(_ sender: UIButton) {
+	}
 }
 
