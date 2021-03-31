@@ -32,7 +32,7 @@ class ViewController: UIViewController {
 		askQuestion()
 	}
 
-	func askQuestion() {
+	func askQuestion(action: UIAlertAction! = nil) {
 		countries.shuffle()
 		correctAnswer = Int.random(in: 0...2)
 		title = countries[correctAnswer].uppercased()
