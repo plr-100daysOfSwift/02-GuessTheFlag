@@ -39,17 +39,20 @@ class ViewController: UIViewController {
 
 	@IBAction func buttonTapped(_ sender: UIButton) {
 		var title: String
+		var message: String
 
 		if sender.tag == correctAnswer {
 			title = "Correct"
+			message = "Well Done!"
 			score += 1
 		} else {
 			title = "Wrong"
+			message = "Oops!"
 			score -= 1
 		}
 		updateLabel()
 
-		let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
 		present(ac, animated: true)
 	}
