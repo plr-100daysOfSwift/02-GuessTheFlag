@@ -42,6 +42,8 @@ class ViewController: UIViewController {
 		var title: String
 		var message: String
 
+		tries += 1
+
 		if sender.tag == correctAnswer {
 			title = "Correct"
 			message = "Well Done!"
@@ -59,7 +61,7 @@ class ViewController: UIViewController {
 	}
 
 	private func updateLabel() {
-		scoreLabel.text = "Your score is \(score)."
+		scoreLabel.text = "Your score is \(score)/\(tries)."
 	}
 }
 
