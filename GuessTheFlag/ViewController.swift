@@ -14,6 +14,7 @@ class ViewController: UIViewController {
 	var countries = [String]()
 	var score = 0
 	var correctAnswer = 0
+	var tries = 0
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
