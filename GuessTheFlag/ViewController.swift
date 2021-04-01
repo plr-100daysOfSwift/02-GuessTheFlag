@@ -9,7 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 	@IBOutlet var buttons: [UIButton]!
-
+	@IBOutlet var scoreLabel: UILabel!
+	
 	var countries = [String]()
 	var score = 0
 	var correctAnswer = 0

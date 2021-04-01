@@ -59,6 +59,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5do-Ai-hye"/>
                     <connections>
+                        <outlet property="scoreLabel" destination="pqw-ry-txV" id="y0M-B1-kCk"/>
                         <outletCollection property="buttons" destination="Lxs-cY-4na" collectionClass="NSMutableArray" id="ZQ6-gb-KhV"/>
                         <outletCollection property="buttons" destination="BDV-XW-h4m" collectionClass="NSMutableArray" id="dcl-kn-kA3"/>
                         <outletCollection property="buttons" destination="A0t-2Y-mOk" collectionClass="NSMutableArray" id="BPN-vO-vPm"/>
