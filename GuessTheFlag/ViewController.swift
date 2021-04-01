@@ -26,16 +26,32 @@ class ViewController: UIViewController {
 			button.layer.borderWidth = 1
 			button.layer.borderColor = UIColor.lightGray.cgColor
 		}
-		updateLabel()
-		askQuestion()
+		startGame()
 	}
 
-	func askQuestion(action: UIAlertAction! = nil) {
+	private func askQuestion() {
 		countries.shuffle()
 		correctAnswer = Int.random(in: 0...2)
 		title = countries[correctAnswer].uppercased()
 		buttons.forEach { button in
 			button.setImage(UIImage(named: countries[button.tag]), for: .normal)
+		}
+	}
+
+	private func startGame(action: UIAlertAction! = nil) {
+		updateLabel()
+		askQuestion()
+	}
+
+	private func continuePlaying(action: UIAlertAction! = nil) {
+		if tries < gameLength {
+			askQuestion()
+		} else {
+			let ac = UIAlertController(title: "All Done", message: "You scored \(score) out of \(gameLength)", preferredStyle: .alert)
+			score = 0
+			tries = 0
+			ac.addAction(UIAlertAction(title: "Play again", style: .default, handler: startGame))
+			present(ac, animated: true)
 		}
 	}
 
@@ -56,7 +72,7 @@ class ViewController: UIViewController {
 		updateLabel()
 
 		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: continuePlaying))
 		present(ac, animated: true)
 	}
 
