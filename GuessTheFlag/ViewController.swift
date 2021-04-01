@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 			button.layer.borderWidth = 1
 			button.layer.borderColor = UIColor.lightGray.cgColor
 		}
-
+		scoreLabel.text = "Your score is \(score)."
 		askQuestion()
 	}
 
@@ -47,6 +47,7 @@ class ViewController: UIViewController {
 			title = "Wrong"
 			score -= 1
 		}
+		scoreLabel.text = "Your score is \(score)."
 
 		let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
 		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
