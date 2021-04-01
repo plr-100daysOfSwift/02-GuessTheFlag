@@ -51,7 +51,6 @@ class ViewController: UIViewController {
 		} else {
 			title = "Wrong"
 			message = "Oops!"
-			score -= 1
 		}
 		updateLabel()
 
