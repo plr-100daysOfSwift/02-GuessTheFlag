@@ -57,9 +57,9 @@ class ViewController: UIViewController {
 	private func askQuestion() {
 		countries.shuffle()
 		correctAnswer = Int.random(in: 0...2)
-		title = countries[correctAnswer].uppercased()
+		title = countries[correctAnswer].title
 		buttons.forEach { button in
-			button.setImage(UIImage(named: countries[button.tag]), for: .normal)
+			button.setImage(UIImage(named: countries[button.tag].rawValue), for: .normal)
 		}
 	}
 
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
 			score += 1
 		} else {
 			title = "Wrong"
-			message = "That's the flag of \(countries[sender.tag])."
+			message = "That's the flag of \(countries[sender.tag].description)."
 		}
 		updateLabel()
 
