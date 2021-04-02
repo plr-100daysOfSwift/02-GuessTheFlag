@@ -67,7 +67,7 @@ class ViewController: UIViewController {
 			score += 1
 		} else {
 			title = "Wrong"
-			message = "Oops!"
+			message = "That's the flag of \(countries[sender.tag])."
 		}
 		updateLabel()
 
