@@ -34,8 +34,37 @@ enum Country: String, CaseIterable {
 }
 
 class ViewController: UIViewController {
+
+	// MARK: - IBOutlets
+
 	@IBOutlet var buttons: [UIButton]!
 	@IBOutlet var scoreLabel: UILabel!
+
+	// MARK: - IBActions
+
+	@IBAction func buttonTapped(_ sender: UIButton) {
+		var title: String
+		var message: String
+
+		tries += 1
+
+		if sender.tag == correctAnswer {
+			title = "Well Done!"
+			message = "That's correct."
+			score += 1
+		} else {
+			title = "Incorrect."
+			message = "You chose the flag of \(countries[sender.tag].description)."
+		}
+
+		updateLabel()
+
+		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: continuePlaying))
+		present(ac, animated: true)
+	}
+
+	// MARK: - Properties
 
 	var countries = Country.allCases
 	var score = 0
@@ -43,15 +72,10 @@ class ViewController: UIViewController {
 	let gameLength = 10
 	var tries = 0
 
+	// MARK: - Private Methods
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		buttons.forEach { button in
-			button.layer.borderWidth = 1
-			button.layer.borderColor = UIColor.lightGray.cgColor
-		}
-		startGame()
+	private func updateLabel() {
+		scoreLabel.text = "Your score is \(score)/\(tries)."
 	}
 
 	private func askQuestion() {
@@ -80,30 +104,17 @@ class ViewController: UIViewController {
 		}
 	}
 
-	@IBAction func buttonTapped(_ sender: UIButton) {
-		var title: String
-		var message: String
+	// MARK: - Life Cycle
 
-		tries += 1
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
-		if sender.tag == correctAnswer {
-			title = "Well Done!"
-			message = "That's correct."
-			score += 1
-		} else {
-			title = "Incorrect."
-			message = "You chose the flag of \(countries[sender.tag].description)."
+		buttons.forEach { button in
+			button.layer.borderWidth = 1
+			button.layer.borderColor = UIColor.lightGray.cgColor
 		}
-
-		updateLabel()
-
-		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: continuePlaying))
-		present(ac, animated: true)
+		startGame()
 	}
 
-	private func updateLabel() {
-		scoreLabel.text = "Your score is \(score)/\(tries)."
-	}
 }
 
