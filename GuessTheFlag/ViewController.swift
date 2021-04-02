@@ -7,20 +7,45 @@
 
 import UIKit
 
+enum Country: String, CaseIterable {
+	case estonia, france, germany, ireland, italy, monaco, nigeria, poland, russia, spain, uk, us
+
+	var title: String {
+		switch self {
+		case .uk:
+			return "United Kingdom"
+		case .us:
+			return "United States"
+		default:
+			return self.rawValue.capitalized
+		}
+	}
+
+	var description: String {
+		switch self {
+		case .uk:
+			return "the United Kingdom"
+		case .us:
+			return "the United States"
+		default:
+			return self.rawValue.capitalized
+		}
+	}
+}
+
 class ViewController: UIViewController {
 	@IBOutlet var buttons: [UIButton]!
 	@IBOutlet var scoreLabel: UILabel!
-	
-	var countries = [String]()
+
+	var countries = Country.allCases
 	var score = 0
 	var correctAnswer = 0
 	let gameLength = 10
 	var tries = 0
 
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
 
 		buttons.forEach { button in
 			button.layer.borderWidth = 1
