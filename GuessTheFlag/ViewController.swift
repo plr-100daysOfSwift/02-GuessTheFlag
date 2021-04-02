@@ -87,13 +87,14 @@ class ViewController: UIViewController {
 		tries += 1
 
 		if sender.tag == correctAnswer {
-			title = "Correct"
-			message = "Well Done!"
+			title = "Well Done!"
+			message = "That's correct."
 			score += 1
 		} else {
-			title = "Wrong"
-			message = "That's the flag of \(countries[sender.tag].description)."
+			title = "Incorrect."
+			message = "You chose the flag of \(countries[sender.tag].description)."
 		}
+
 		updateLabel()
 
 		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
