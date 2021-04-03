@@ -115,7 +115,8 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score",
+																												style: .plain,
 																												target: self,
 																												action: #selector(showScore))
 		buttons.forEach { button in
