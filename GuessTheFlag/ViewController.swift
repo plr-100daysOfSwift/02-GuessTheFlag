@@ -105,7 +105,9 @@ class ViewController: UIViewController {
 	}
 
 	@objc func showScore() {
-		// more code here
+		let ac = UIAlertController(title: "Your current score is \(score).", message: nil, preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		present(ac, animated: true)
 	}
 
 	// MARK: - Life Cycle
