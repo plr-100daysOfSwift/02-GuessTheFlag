@@ -104,11 +104,18 @@ class ViewController: UIViewController {
 		}
 	}
 
+	@objc func showScore() {
+		// more code here
+	}
+
 	// MARK: - Life Cycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
+																												target: self,
+																												action: #selector(showScore))
 		buttons.forEach { button in
 			button.layer.borderWidth = 1
 			button.layer.borderColor = UIColor.lightGray.cgColor
