@@ -18,6 +18,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxs-cY-4na">
                                 <rect key="frame" x="107" y="100" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lxs-cY-4na" secondAttribute="height" multiplier="2:1" id="BgD-LO-Vas"/>
+                                </constraints>
                                 <state key="normal" image="estonia"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2EB-UT-rOZ"/>
@@ -25,6 +28,9 @@
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDV-XW-h4m">
                                 <rect key="frame" x="107" y="230" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BDV-XW-h4m" secondAttribute="height" multiplier="2:1" id="5BZ-TF-0gj"/>
+                                </constraints>
                                 <state key="normal" image="estonia"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T1l-rf-C5H"/>
@@ -32,13 +38,19 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0t-2Y-mOk">
                                 <rect key="frame" x="107" y="360" width="200" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A0t-2Y-mOk" secondAttribute="height" multiplier="2:1" id="KoW-EK-OhX"/>
+                                </constraints>
                                 <state key="normal" image="estonia"/>
                                 <connections>
                                     <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YEY-fw-DfV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqw-ry-txV">
-                                <rect key="frame" x="186" y="480" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqw-ry-txV">
+                                <rect key="frame" x="20" y="480" width="374" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="gKd-MB-gmK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,13 +60,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="A0t-2Y-mOk" firstAttribute="top" secondItem="BDV-XW-h4m" secondAttribute="bottom" constant="30" id="7Xh-I4-exg"/>
+                            <constraint firstItem="BDV-XW-h4m" firstAttribute="height" secondItem="Lxs-cY-4na" secondAttribute="height" id="9XM-8N-xdr"/>
                             <constraint firstItem="Lxs-cY-4na" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="9ez-sl-byS"/>
                             <constraint firstItem="Lxs-cY-4na" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Aak-lr-hAe"/>
                             <constraint firstItem="A0t-2Y-mOk" firstAttribute="centerX" secondItem="BDV-XW-h4m" secondAttribute="centerX" id="JJI-TB-QS7"/>
                             <constraint firstItem="pqw-ry-txV" firstAttribute="top" secondItem="A0t-2Y-mOk" secondAttribute="bottom" constant="20" id="SfT-UH-3aH"/>
                             <constraint firstItem="BDV-XW-h4m" firstAttribute="top" secondItem="Lxs-cY-4na" secondAttribute="bottom" constant="30" id="aWK-ac-S0C"/>
+                            <constraint firstItem="A0t-2Y-mOk" firstAttribute="height" secondItem="BDV-XW-h4m" secondAttribute="height" id="m0X-on-CHo"/>
                             <constraint firstItem="BDV-XW-h4m" firstAttribute="centerX" secondItem="Lxs-cY-4na" secondAttribute="centerX" id="syk-VO-wGO"/>
                             <constraint firstItem="pqw-ry-txV" firstAttribute="centerX" secondItem="A0t-2Y-mOk" secondAttribute="centerX" id="tsi-qU-W9k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pqw-ry-txV" secondAttribute="bottom" constant="20" id="z9p-5z-UtN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5do-Ai-hye"/>
