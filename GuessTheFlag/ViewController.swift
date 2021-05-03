@@ -68,6 +68,7 @@ class ViewController: UIViewController {
 
 	var countries = Country.allCases
 	var score = 0
+	var bestScore = 0
 	var correctAnswer = 0
 	let gameLength = 10
 	var tries = 0
