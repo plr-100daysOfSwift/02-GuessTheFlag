@@ -100,6 +100,7 @@ class ViewController: UIViewController {
 		} else {
 			if score > bestScore {
 				bestScore = score
+				defaults.set(bestScore, forKey: "BestScore")
 			}
 
 			let title = "You scored \(score) out of \(gameLength)."
