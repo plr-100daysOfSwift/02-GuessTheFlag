@@ -66,6 +66,7 @@ class ViewController: UIViewController {
 
 	// MARK: - Properties
 
+	let defaults = UserDefaults.standard
 	var countries = Country.allCases
 	var score = 0
 	var bestScore = 0
@@ -125,6 +126,8 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		self.bestScore = defaults.integer(forKey: "BestScore")
 
 		buttons.forEach { button in
 			button.layer.borderWidth = 1
