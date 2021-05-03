@@ -98,6 +98,9 @@ class ViewController: UIViewController {
 			askQuestion()
 		} else {
 			let ac = UIAlertController(title: "All Done", message: "You scored \(score) out of \(gameLength)", preferredStyle: .alert)
+			if score > bestScore {
+				bestScore = score
+			}
 			score = 0
 			tries = 0
 			ac.addAction(UIAlertAction(title: "Play again", style: .default, handler: startGame))
