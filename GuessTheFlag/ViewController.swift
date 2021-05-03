@@ -97,10 +97,23 @@ class ViewController: UIViewController {
 		if tries < gameLength {
 			askQuestion()
 		} else {
-			let ac = UIAlertController(title: "All Done", message: "You scored \(score) out of \(gameLength)", preferredStyle: .alert)
 			if score > bestScore {
 				bestScore = score
 			}
+
+			let title = "You scored \(score) out of \(gameLength)."
+
+			let message: String
+			switch score {
+			case _ where score == 10:
+				message = "It doesn't get better than that!"
+			case _ where score == bestScore:
+				message = "Your best score so far."
+			default:
+				message = "You can do better."
+			}
+
+			let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
 			score = 0
 			tries = 0
 			ac.addAction(UIAlertAction(title: "Play again", style: .default, handler: startGame))
