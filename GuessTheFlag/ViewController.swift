@@ -77,7 +77,10 @@ class ViewController: UIViewController {
 	// MARK: - Private Methods
 
 	private func updateLabel() {
-		scoreLabel.text = "Your score is \(score)/\(tries)."
+		scoreLabel.text = """
+			Your score is \(score)/\(tries).
+			Your best score is \(bestScore).
+			"""
 	}
 
 	private func askQuestion() {
