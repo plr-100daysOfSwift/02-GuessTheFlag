@@ -57,11 +57,19 @@ class ViewController: UIViewController {
 			message = "You chose the flag of \(countries[sender.tag].description)."
 		}
 
-		updateLabel()
+		UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: []) {
+			sender.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+		} completion: { finished in
+			UIView.animate(withDuration: 0.4, delay: 0, options: []) {
+				sender.transform = .identity
+				self.updateLabel()
 
-		let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: continuePlaying))
-		present(ac, animated: true)
+				let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+				ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: self.continuePlaying))
+				self.present(ac, animated: true)
+			}
+		}
+
 	}
 
 	// MARK: - Properties
