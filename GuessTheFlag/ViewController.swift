@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 enum Country: String, CaseIterable {
 	case estonia, france, germany, ireland, italy, monaco, nigeria, poland, russia, spain, uk, us
@@ -72,6 +73,20 @@ class ViewController: UIViewController {
 	let gameLength = 10
 	var tries = 0
 
+
+	// MARK: - Life Cycle
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+
+		buttons.forEach { button in
+			button.layer.borderWidth = 1
+			button.layer.borderColor = UIColor.lightGray.cgColor
+		}
+		scheduleNotifications()
+		startGame()
+	}
+
 	// MARK: - Private Methods
 
 	private func updateLabel() {
@@ -104,16 +119,50 @@ class ViewController: UIViewController {
 		}
 	}
 
-	// MARK: - Life Cycle
+	private func scheduleNotifications() {
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+		registerLocal()
+		registerCategories()
 
-		buttons.forEach { button in
-			button.layer.borderWidth = 1
-			button.layer.borderColor = UIColor.lightGray.cgColor
+		let center = UNUserNotificationCenter.current()
+		center.removeAllPendingNotificationRequests()
+
+		center.getNotificationSettings { settings in
+			guard settings.authorizationStatus == .authorized else { return }
+
+			let content = UNMutableNotificationContent()
+			content.title = "Daily Exercise"
+			content.body = "Time for a little flags exercise."
+			content.categoryIdentifier = "exercise"
+			content.sound = .default
+
+//			let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
+			let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+			let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+			center.add(request)
+
 		}
-		startGame()
+		
+	}
+
+	private func registerCategories() {
+		let centre = UNUserNotificationCenter.current()
+
+		let play = UNNotificationAction(identifier: "play", title: "Play", options: [.foreground])
+		let postpone = UNNotificationAction(identifier: "postpone", title: "Maybe Tomorrow", options: [])
+		let categories = UNNotificationCategory(identifier: "exercise", actions: [play, postpone], intentIdentifiers: [], options: [])
+		centre.setNotificationCategories([categories])
+
+	}
+
+	private func registerLocal() {
+		let centre = UNUserNotificationCenter.current()
+		centre.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+			if let error = error {
+				// Handle error
+			}
+		}
 	}
 
 }
